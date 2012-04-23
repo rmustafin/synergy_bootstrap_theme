@@ -1,5 +1,5 @@
 class HomeController < Spree::BaseController
-  #helper :products, :taxons
+  helper :products, :taxons
 
   def index
     home_taxonomy = get_taxonomies.find{|t| t.show_on_homepage? }

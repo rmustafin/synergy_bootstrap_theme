@@ -22,6 +22,7 @@ module SynergyBootstrapTheme
         Spree::Config.set :products_per_page => 12
       end
 
+=begin
       Image.attachment_definitions[:attachment].merge!({
         :styles => {
             :mini => '50x50>',
@@ -30,6 +31,7 @@ module SynergyBootstrapTheme
             :large => '600x600>'
         }
       })
+=end
     end
 
     config.to_prepare &method(:activate).to_proc

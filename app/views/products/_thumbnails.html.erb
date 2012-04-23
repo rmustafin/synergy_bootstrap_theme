@@ -1,0 +1,32 @@
+<!-- no need for thumnails unless there is more then one image -->
+<% if product.images.size > 1 %>
+  <ul class="thumbnails product-gallery">
+    <% product.images[1..product.images.size].each do |i| %>
+      <li class="span1">
+        <a href="<%= i.attachment.url(:large) %>" class="thumbnail gallery-item" rel="gallery">
+          <%= image_tag(i.attachment.url(:mini)) %>
+        </a>
+      </li>
+    <% end %>
+
+
+    <% if @product.has_variants?
+         has_checked = false %>
+      <% @variants.each do |v|
+        checked = !has_checked && (v.available?)
+        has_checked = true if checked
+
+        if checked
+          v.images.each do |i| %>
+            <li class="span1">
+              <a href="<%= i.attachment.url(:large) %>" class="thumbnail" rel="gallery">
+                <%= image_tag(i.attachment.url(:mini)) %>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+  </ul>
+<% end %>

@@ -1,0 +1,22 @@
+<fieldset id='shipping_method'>
+
+  <div class="control-group">
+    <label class="control-label"><%= t("shipping_method") %></label>
+    <div class="controls">
+
+      <% @order.rate_hash.each do |shipping_method| %>
+        <label class="radio">
+          <%= radio_button(:order, :shipping_method_id, shipping_method[:id]) %>
+          <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+        </label><br />
+      <% end %>
+
+    </div>
+  </div>
+
+</fieldset>
+
+
+<div class="form-actions">
+  <input type="submit" class="btn btn-primary" value="<%=t("save_and_continue") %>" data-disable-with="<%= t(:wait) %>"/>
+</div>

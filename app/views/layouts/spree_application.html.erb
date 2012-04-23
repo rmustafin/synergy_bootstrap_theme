@@ -1,1 +1,53 @@
-hello
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <%= render 'shared/head' %>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- лого и корзина -->
+      <%= render :partial => "shared/header" %>
+
+      <!-- меню -->
+      <%= render :partial => "shared/main_menu" %>
+
+      <div class="row">
+
+        <!-- сайдбар -->
+        <% if content_for?(:sidebar) %>
+          <%= hook :sidebar do %>
+            <%= yield :sidebar %>
+          <% end %>
+          <div class="span9">
+        <% else %>
+          <div class="span12">
+        <% end %>
+
+        <%= flash_messages %>
+        <%= flash[:error] %>
+
+        <%= yield %>
+
+        </div>
+      </div>
+
+      <!-- футер -->
+      <%= render :partial => "shared/footer" %>
+
+    </div>
+
+    <!-- javascript -->
+    <%= javascript_include_tag 'jquery.min.js' %>
+    <%= javascript_include_tag 'rails' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'bootstrap.min.js' %>
+    <%= javascript_include_tag 'load-image.min.js' %>
+    <%= javascript_include_tag 'bootstrap-image-gallery.min.js' %>
+    <% unless I18n.locale.to_s[0..1] == 'en' %>
+      <%#= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>
+    <% end %>
+
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<% content_for :sidebar do %>
+  <%= render "shared/taxonomies" %>
+<% end %>
+
+<%= render :partial => "shared/carousel" %>
+
+
+<% @taxons.each do |taxon| %>
+  <div class="taxon">
+    <h2><%= taxon.name %></h2>
+
+    <%= render :partial => "shared/products", :locals => {:products => taxon_preview(taxon, 6), :taxon => taxon} %>
+  </div>
+<% end %>

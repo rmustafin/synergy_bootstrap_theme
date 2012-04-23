@@ -1,0 +1,26 @@
+<% cache ['taxonomies', @taxon], :expires_in => SHORT_INTERVAL do %>
+  <div class="span3">
+    <% get_taxonomies.each do |taxonomy| %>
+      <ul class="breadcrumb">
+        <li><%= link_to taxonomy.name, seo_url(taxonomy.root) %></li>
+      </ul>
+      <div class="span3 product_list">
+        <ul class="nav">
+          <% taxonomy.root.children.each do |taxon| %>
+            <li>
+              <%= link_to taxon.name, seo_url(taxon), :class => ("active" if @taxon and ([@taxon] + @taxon.ancestors).include?(taxon)) %>
+              <% if taxon.children.any? %>
+                <ul>
+                  <% taxon.children.each do |t| %>
+                    <li><%= link_to " - #{t.name} (#{t.products.count})", seo_url(t), :class => ("active" if @taxon == t) %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

@@ -1,0 +1,8 @@
+<ul class="breadcrumb">
+  <li><%= link_to t(:main_page), root_path %><span class="divider">/</span></li>
+  <% crumbs.each do |crumb| %>
+    <li><%= link_to crumb[:name], crumb[:path] %><span class="divider">/</span></li>
+  <% end %>
+  <li class="active"><%= location %></li>
+</ul>
+

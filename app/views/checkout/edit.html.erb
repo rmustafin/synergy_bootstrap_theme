@@ -1,0 +1,27 @@
+<% content_for :head do %>
+  <%= javascript_include_tag  'checkout', '/states' %>
+<% end %>
+
+<div id="checkout" class='row'>
+
+  <div class="span8">
+    <h2><%= t("checkout")%></h2><br>
+    <%= checkout_progress %>
+    <%= render "shared/error_messages", :target => @order %>
+    <%= form_for @order, :url => update_checkout_path(@order.state), :html => {:id => "checkout_form_#{@order.state}", :class => "form-horizontal"} do |form| %>
+      <%= render @order.state, :form => form %>
+      <input id="post-final" type="submit" style="display:none"/>
+    <% end %>
+  </div>
+
+  <div class="span4">
+    <%= hook :checkout_summary_box do %>
+      <% if @order.state != 'confirm' %>
+        <div id="checkout-summary" class=" pull-right">
+          <%= render 'summary', :order => @order %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

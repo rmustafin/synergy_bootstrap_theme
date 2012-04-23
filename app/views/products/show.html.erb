@@ -1,0 +1,37 @@
+<% content_for :sidebar do %>
+  <%= hook :taxon_sidebar_navigation do %>
+    <%= render :partial => "shared/taxonomies" %>
+    <%= render(:partial => "shared/filters") if @taxon && @taxon.children.empty? %>
+  <% end %>
+<% end %>
+
+<%= render :partial => "shared/breadcrumbs", :locals => {:crumbs => [
+    {:path => seo_url(@product.taxons[0].parent), :name => @product.taxons[0].parent.name},
+    {:path => seo_url(@product.taxons[0]), :name => @product.taxons[0].name} ],
+    :location => accurate_title}
+%>
+
+<div class="row">
+  <div class="span9">
+    <h1><%= accurate_title %></h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery" data-selector="a.gallery-item">
+    <div class="span3">
+      <%= render 'image' %>
+      <%= render 'thumbnails', :product => @product %>
+    </div>
+
+    <div class="span6">
+      <%= render 'cart_form' %>
+    </div>
+  </div>
+</div>
+
+<%= render 'description' %>
+<%= render 'properties' %>
+<%= render 'similar_products' %>

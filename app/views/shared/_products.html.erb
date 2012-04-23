@@ -1,0 +1,50 @@
+<%
+  paginated_products = @searcher.products if params.key?(:keywords)
+  paginated_products ||= products
+%>
+
+<% if products.empty? %>
+  <%= t(:no_products_found) %>
+<% elsif params.key?(:keywords) %>
+  <%= t(:search_results, :keywords => h(params[:keywords])) %>
+<% end %>
+
+<% if products.any? %>
+<ul class="thumbnails">
+  <% products.each do |product| %>
+    <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
+
+      <li class="span3 product" id="<%= dom_id(product) %>">
+        <%= hook :products_list_item, {:product => product} do %>
+          <div class="thumbnail">
+            <div class="caption centered">
+              <%= link_to raw(product.name), product %>
+            </div>
+            <div class="product-image-wrapper">
+              <%= link_to small_image(product), product %>
+            </div>
+            <div class="caption centered">
+              <span class="label label-info label-price"><%= product_price(product) %></span>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>
+
+<% if paginated_products.respond_to?(:total_pages)
+      params.delete(:search)
+      params.delete(:taxon) %>
+<%= will_paginate(paginated_products,
+                    :previous_label => "&#171; #{t('previous')}",
+                    :next_label => "#{t('next')} &#187;") %>
+<% end %>
+
+
+
+
+
+
+

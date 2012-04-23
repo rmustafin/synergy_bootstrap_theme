@@ -1,0 +1,10 @@
+<li class="span3">
+  <div class="thumbnail">
+    <div class="product-image-wrapper">
+      <%= link_to image_tag(taxon.icon.url(:normal)), seo_url(taxon) %>
+    </div>
+    <div class="caption centered">
+      <%= link_to "#{taxon.name} (#{taxon.products.count})" %>
+    </div>
+  </div>
+</li>

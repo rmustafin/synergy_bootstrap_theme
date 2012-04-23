@@ -1,0 +1,12 @@
+<% if target && target.errors.any? %>
+  <div class="alert alert-error">
+    <a class="close" data-dismiss="alert">×</a>
+
+    <p><%= t(:there_were_problems_with_the_following_fields) %>:</p>
+    <ul>
+      <% target.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

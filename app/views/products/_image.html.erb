@@ -1,0 +1,21 @@
+<% image ||= @product.images.first
+   if image %>
+  <a href="<%= image.attachment.url(:large) %>" class="thumbnail gallery-item">
+    <%= image_tag(image.attachment.url(:product)) %>
+  </a>
+<% else %>
+  <%= product_image(@product) %>
+<% end %>
+
+
+<div id="modal-gallery" class="modal modal-gallery hide fade">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3 class="modal-title"></h3>
+  </div>
+  <div class="modal-body"><div class="modal-image"></div></div>
+  <div class="modal-footer">
+    <a class="btn btn-primary modal-next"><%= t(:next) %> <i class="icon-arrow-right icon-white"></i></a>
+    <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> <%= t(:previous) %></a>
+  </div>
+</div>

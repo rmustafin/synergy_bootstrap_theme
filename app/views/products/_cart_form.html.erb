@@ -1,0 +1,54 @@
+<%= form_for :order, :url => populate_orders_url do |f| %>
+  <%= hook :inside_product_cart_form do %>
+
+    <div class="span6">
+      <h2>
+        <strong><%= product_price(@product) %></strong>
+      </h2>
+    </div>
+
+    <div class="span6">
+      <% if @product.has_variants? %>
+        <div id="product-variants">
+          <% if defined?(SpreeEnhancedOptionTypes) %>
+            <%= render :partial => (Spree::Config[:eot_presentation_type] || 'radio_sets'), :locals => {:f => f} %>
+          <% else %>
+            <h2><%= t('variants') %></h2>
+            <ul>
+              <%  has_checked = false
+                  @product.variants.active.each_with_index do |v,index|
+                    next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products])
+                    checked = !has_checked && (v.in_stock || Spree::Config[:allow_backorders])
+                    has_checked = true if checked %>
+                <li>
+                  <label>
+                    <%= radio_button_tag "products[#{@product.id}]", v.id, checked, :disabled => !v.in_stock && !Spree::Config[:allow_backorders] %>
+                    <span class="variant-description">
+                <%= variant_options v %>
+              </span>
+                    <% if variant_price_diff v %>
+                      <span class="price diff"><%= variant_price_diff v %></span>
+                    <% end %>
+                  </label>
+                </li>
+              <% end%>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @product.has_stock? || Spree::Config[:allow_backorders] %>
+        <%= hidden_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
+                             1, :class => "title", :size => 3 %>
+        <button class="btn btn-large btn-primary" data-disable-with="<%= t(:wait) %>">
+          <i class="icon-shopping-cart  icon-white"></i>
+          <%= t('add_to_cart') %>
+        </button>
+      <% else %>
+        <%= content_tag('strong', t('out_of_stock')) %>
+      <% end %>
+
+    </div>
+
+  <% end %>
+<% end %>

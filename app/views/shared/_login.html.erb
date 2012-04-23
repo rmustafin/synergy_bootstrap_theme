@@ -1,0 +1,29 @@
+<%= form_for(:user, :url => user_session_path, :html => {:class => "form-horizontal"}) do |f| %>
+  <fieldset>
+    <legend>Войти</legend>
+    <div class="control-group">
+      <%= f.label(:email, t("email"), :class => "control-label") %>
+      <div class="controls">
+        <%= f.text_field('email') %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label(:password, t("password"), :class => "control-label") %>
+      <div class="controls">
+        <%= f.password_field('password') %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <%= f.check_box :remember_me %>
+          <%= t('remember_me') %>
+        </label>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= submit_tag t("login_as_existing"), :disable_with => t(:wait), :class => 'submit btn btn-primary' %>
+      <%= " " + t("or") %> <%= link_to t("create_a_new_account"), signup_path %> | <%= link_to t("forgot_password"), new_user_password_path %>
+    </div>
+  </fieldset>
+<% end %>

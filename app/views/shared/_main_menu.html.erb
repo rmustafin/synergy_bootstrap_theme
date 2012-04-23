@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="span12">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+
+
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li <%= raw 'class="active"' if current_page?(root_path) %>><%= link_to "Главная", root_path %></li>
+              <% for page in Page.header_links do %>
+                <li <%= raw 'class="active"' if current_page?(page.link) %>>
+                  <%= link_to page.title, page.link %>
+                </li>
+              <% end %>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="divider-vertical"></li>
+
+              <%= form_tag products_url, :method => :get, :class => "navbar-search" do %>
+                <%= text_field_tag :keywords, params[:keywords], :class => "search-query span2", :placeholder => t(:search) %>
+                <%= submit_tag t(:find), :name => nil, :id => 'keywords_submit', :class => "btn btn-primary btn-small search_btn"  %>
+              <% end %>
+
+            </ul>
+          </div>
+          <!-- /.nav-collapse -->
+        </div>
+      </div>
+      <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+  </div>
+</div>

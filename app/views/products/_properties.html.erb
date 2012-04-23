@@ -1,0 +1,15 @@
+<% unless @product_properties.empty? %>
+  <hr>
+  <h3><%= t(:product_properties) %>:</h3>
+
+  <table class="table table-striped table-bordered table-condensed">
+    <tbody>
+    <% for product_property in @product_properties %>
+      <tr>
+        <td><%= product_property.property.presentation %></td>
+        <td><%= product_property.value %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="span4 logo">
+    <%= link_to root_path do %>
+          <h1>Bootstrap theme</h1>
+        <% end %>
+  </div>
+  <div class="span8">
+
+    <div class="row">
+      <div class="span2 offset6">
+        <table>
+          <tr>
+            <td><i class="cart_icon"></i></td>
+            <td><%= link_to_cart %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="links pull-right">
+        <% if current_user %>
+          <%= t(:hello_user) %>, <%= link_to current_user.email, account_path %> |
+          <%= link_to t('logout'), destroy_user_session_path, {:id => 'log_out_link'} %>
+        <% else %>
+          <%= t(:hello_user) %>, <%= link_to t('log_in'), "#login", {"data-toggle" => 'modal'} %>.
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<% unless current_user %>
+  <div id="login" class="modal hide fade" style="display: none;">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+    </div>
+    <div class="modal-body">
+      <%= render :partial => "shared/login" %>
+    </div>
+  </div>
+<% end %>
+

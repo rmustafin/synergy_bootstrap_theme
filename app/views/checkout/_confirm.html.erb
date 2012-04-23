@@ -1,0 +1,10 @@
+<fieldset id="order_details">
+  <div class="clear"></div>
+  <legend><%= t(@order.state, :scope => :order_state).titleize %></legend>
+  <%= render :partial => 'shared/order_details', :locals => {:order => @order} %>
+</fieldset>
+
+
+<div class="form-actions">
+  <input type="submit" class="btn btn-primary" value="<%=t("place_order") %>" data-disable-with="<%= t(:wait) %>"/>
+</div>

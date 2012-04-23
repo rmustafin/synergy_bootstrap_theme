@@ -1,0 +1,21 @@
+<% if @product.similar_products.any? %>
+
+  <hr>
+  <h3><%= t(:similar_products) %></h3>
+
+  <ul class="thumbnails related_products">       
+	  <% @product.similar_products.each do |product| %>   
+      <li class="span2">
+        <div class="thumbnail">
+          <div class="product-image-wrapper">
+            <%= link_to small_image(product), product %>
+          </div>
+          <div class="caption centered">
+            <%= link_to raw(product.name), product %>  
+            <%= product_price(product) %><br><br>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

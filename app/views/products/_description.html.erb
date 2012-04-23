@@ -1,0 +1,9 @@
+<hr>
+<h3><%= t(:description) %></h3>
+<div>
+  <% if @product.description %>
+    <%= product_description(@product) %>
+  <% else %>
+    <%= t("product_has_no_description") %>
+  <% end %>
+</div>

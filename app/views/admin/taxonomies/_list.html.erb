@@ -1,0 +1,23 @@
+<table class="index">
+  <tr>
+    <th><%= t('name') %></th>
+    <% if defined?(SpreeCompareProducts) %>
+    <th><%= t('compare_products.comparable_container') %></th>
+    <% end %>
+    <th><%= t('activerecord.attributes.taxonomy.show_on_homepage').capitalize %></th>
+    <th></th>
+  </tr>
+  
+  <% for taxonomy in @taxonomies %>
+    <tr id="<%= dom_id taxonomy %>">
+      <td><%= taxonomy.name %></td>
+      <% if defined?(SpreeCompareProducts) %>
+      <td><%= icon('tick') if taxonomy.comparable? %></td>
+      <% end %>
+      <td><%= icon('tick') if taxonomy.show_on_homepage? %></td>
+      <td class="actions">
+        <%= link_to_edit taxonomy.id %> &nbsp; <%= link_to_delete taxonomy %>
+      </td>
+    </tr>
+  <% end %>
+</table>
