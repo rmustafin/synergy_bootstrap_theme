@@ -11,8 +11,8 @@ module SynergyBootstrapTheme
         Rails.env.production? ? require(c) : load(c)
       end
       
-      Admin::PagesController.cache_sweeper :page_sweeper
-      Admin::TrackersController.cache_sweeper :tracker_sweeper
+      #Admin::PagesController.cache_sweeper :page_sweeper
+      #Admin::TrackersController.cache_sweeper :tracker_sweeper
       
       if defined?(Spree::RecentlyViewed) && Spree::RecentlyViewed::Config.instance
         Spree::RecentlyViewed::Config.set :recently_viewed_products_max_count => 3
