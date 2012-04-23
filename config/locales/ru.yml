@@ -1,0 +1,47 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        email: "Электронная почта"
+      taxonomy:
+        show_on_homepage: "отображать на главной странице"
+
+  number:
+    # Used in number_to_currency()
+    currency:
+      format:
+        precision: 0
+  shipping_method: Способ доставки
+  order_processed_successfully: Ваш заказ был успешно оформлен
+  new_customer: Регистрация в магазине
+  add_to_cart: В корзину
+  compare_products:
+    сomparable_products: "Список товаров:"
+  subtotal: Стоимость товаров
+  recalculate: Пересчитать
+  save_and_continue: Продолжить
+  email: "Электронная почта"
+  email_address: "Адрес электронной почты"
+  back_to_store: "Назад в магазин"
+  review_name: "Ваше имя"
+  product_properties: "Характеристики"
+  recently_viewed_products: "Вы недавно смотрели"
+  submit_your_review: "Добавить отзыв"
+  jgrowl_closer_template: "Закрыть все"
+  you_must_rate_the_product: "Вы должны оценить товар"
+  notice: "Уведомление"
+  create_a_new_account: "Зарегистрироваться"
+  empty: "Пусто"
+  login_as_existing: "Войти"
+  registrate: "Зарегистрироваться"
+  main_page: "Главная"
+  next: "Следующее"
+  previous: "Предыдущее"
+  wait: "Подождите..."
+  update_cart: "Обновить"
+  checkout: "Оформить заказ"
+  edit_address: "Редактировать адрес"
+  similar_products: "Похожие товары"
+  search: "Поиск"
+  find: "Искать"
+
