@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = 'synergy_bootstrap_theme'
-  s.version      = '0.0.0'
+  s.version      = '0.0.1'
   s.date         = '2012-04-23'
   s.summary      = "Synergy theme with twitter bootstrap"
   s.description  = "A simple synergy theme based on synergy_default_theme with twitter bootstrap"
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.8.7'
   s.requirements << 'none'
 
-  s.add_dependency('synergy', '~> 0.60.0')
+  #s.add_dependency('synergy', '~> 0.60.0')
   s.add_dependency('dalli', '~> 1.0.3')
 end
 
