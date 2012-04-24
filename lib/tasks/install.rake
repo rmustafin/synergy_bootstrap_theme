@@ -1,4 +1,4 @@
-namespace :synergy_default_theme do
+namespace :synergy_bootstrap_theme do
   desc "Copies all migrations and assets (NOTE: This will be obsolete with Rails 3.1)"
   task :install do
     Rake::Task['synergy_bootstrap_theme:install:migrations'].invoke
