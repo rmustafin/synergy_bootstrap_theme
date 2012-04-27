@@ -1,6 +1,6 @@
 <% image ||= @product.images.first
    if image %>
-  <a href="<%= image.attachment.url(:large) %>" class="thumbnail gallery-item">
+  <a href="<%= image.attachment.url(:large) %>" class="thumbnail gallery-item" title="<%= t(:click_to_enlarge) %>">
     <%= image_tag(image.attachment.url(:product)) %>
   </a>
 <% else %>
@@ -15,7 +15,7 @@
   </div>
   <div class="modal-body"><div class="modal-image"></div></div>
   <div class="modal-footer">
-    <a class="btn btn-primary modal-next"><%= t(:next) %> <i class="icon-arrow-right icon-white"></i></a>
     <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> <%= t(:previous) %></a>
+    <a class="btn btn-primary modal-next"><%= t(:next) %> <i class="icon-arrow-right icon-white"></i></a>
   </div>
 </div>

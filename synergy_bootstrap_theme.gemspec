@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = 'synergy_bootstrap_theme'
-  s.version      = '0.0.1'
+  s.version      = '0.0.2'
   s.date         = '2012-04-23'
   s.summary      = "Synergy theme with twitter bootstrap"
   s.description  = "A simple synergy theme based on synergy_default_theme with twitter bootstrap"

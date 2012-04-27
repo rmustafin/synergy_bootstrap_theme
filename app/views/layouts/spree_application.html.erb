@@ -41,10 +41,10 @@
     <!-- javascript -->
     <%= javascript_include_tag 'jquery.min.js' %>
     <%= javascript_include_tag 'rails' %>
-    <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'bootstrap.min.js' %>
     <%= javascript_include_tag 'load-image.min.js' %>
     <%= javascript_include_tag 'bootstrap-image-gallery.min.js' %>
+    <%= javascript_include_tag 'theme' %>
     <% unless I18n.locale.to_s[0..1] == 'en' %>
       <%#= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>
     <% end %>
