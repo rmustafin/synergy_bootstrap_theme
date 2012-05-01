@@ -164,3 +164,9 @@ ul.footer_menu li {
   float: left;
   margin-left: 1em;
 }
+
+.cart{
+  padding: 5px;
+  margin-bottom: 0;
+  width: 130px;
+}
